@@ -1,0 +1,61 @@
+body{
+	margin: 0px;
+}
+
+.score {
+  height: 100px;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.player-one{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+}
+
+.round-score {
+  background-color: rgba(255, 0, 0, 0.5);
+  color: white;
+  font-size: 24px;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  margin: 16px;
+}
+
+.button:hover {
+  background-color: #fff;
+  color: #d7263d;
+  box-shadow: 0px 3px 15px rgba(215,38,61,0.2);
+  transform: scale(1.1);
+}
+
+.container {
+  display: flex;
+  height: 100vh; 
+}
+
+.left-block,
+.right-block {
+  width: 50%; 
+}
+
+.left-block {
+  background-color: #f1f1f1; 
+}
+
+.right-block {
+  background-color: #ddd; 
+}
+
+.line {
+  width: 2px; 
+  background-color: #333; 
+  margin: 0 auto; 
+}
