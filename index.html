@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Dice Game</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="icon.png">
 </head>
 <body>
 
@@ -11,10 +12,15 @@
 
 <div class="container">
   <div class="left-block">
+    <!--<h1>PLAYER 1</h1>-->
   	<div class="round-score player-one">Current</div>
   </div>
-
+  <div class="button-container">
+    <button class="first-button"><h1 class="point">ROLL DICE</h1></button>
+	  <button class="second-button"><h1 class="global">HOLD</h1></button>
+  </div>
   <div class="right-block">
+    <!--<h1>PLAYER 2</h1>-->
   	<div class="round-score player-two">Current</div>
   </div>
 </div>
@@ -32,7 +38,24 @@
 
 
 
- <script src="app.js"></script>
+<script>
+let count = 0;
+const point = document.getElementsByClassName('point');
+const element = document.querySelector('div');
+
+element.addEventListener('click', function() {
+  count++;
+  point.textContent = count;
+console.log(point)
+});
+
+/*
+let global = 0;
+const element2 = document
+const global_score = document.getElementsByClassName('global');
+*/
+
+</script>
 </body>
 </html>
 <!--Création d’un petit jeu sur navigateur web à l’aide du DOM.
