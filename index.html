@@ -13,7 +13,7 @@
 <div class="container">
   <div class="left-block">
     <!--<h1>PLAYER 1</h1>-->
-  	<div class="round-score player-one">Current</div>
+  	<div class="round-score player-one">0</div>
   </div>
   <div class="button-container">
     <button class="first-button"><h1 class="point">ROLL DICE</h1></button>
@@ -21,17 +21,9 @@
   </div>
   <div class="right-block">
     <!--<h1>PLAYER 2</h1>-->
-  	<div class="round-score player-two">Current</div>
+  	<div class="round-score player-two">0</div>
   </div>
 </div>
-
-
-
-
-	
-	
-
-
 
 
 
@@ -40,14 +32,15 @@
 
 <script>
 let count = 0;
-const point = document.getElementsByClassName('point');
-const element = document.querySelector('div');
+const element = document.querySelector('.point');
+const scoreElement = document.querySelector('.round-score');
 
 element.addEventListener('click', function() {
   count++;
-  point.textContent = count;
-console.log(point)
+  scoreElement.textContent = count;
 });
+
+
 
 /*
 let global = 0;
