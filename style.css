@@ -7,11 +7,19 @@ body{
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-.player-one, .player-two{
+.player-one, .player-two, .new_game{
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+
+
+.new_game{
+  border: 1px red solid rgba(255,255,255,0.9);
+  color: red;
+  bottom: -80%;
+  width: 10%;
 }
 
 .player-one{
@@ -76,9 +84,10 @@ body{
   margin-top: 40px;
 }
 
-.left-block h1{
-  top: 20%;
+.left-block h1,.right-block h1 {
   display: flex;
+  font-size:80px;
+  justify-content: space-around;
 }
 
 .left-block,
