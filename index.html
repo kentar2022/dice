@@ -3,121 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Dice Game</title>
-  <link rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="icon" href="icon.png">
-  <style type="text/css">
-  body{
-  margin: 0px;
-}
-
-.score{
-  height: 100px;
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-.player-one, .player-two, .new_game{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-}
-
-
-.new_game{
-  border: 1px red solid rgba(255,255,255,0.9);
-  color: red;
-  bottom: -80%;
-  width: 10%;
-}
-
-.player-one{
-  bottom: 16%;
-  left: 60%;
-  width: 10%;
-  height: 10%;
-}
-.player-two{
-  bottom: 16%;
-  right: 60%;
-  width: 10%;
-  height: 10%;
-}
-
-.round-score {
-  background-color: rgba(255, 0, 0, 0.7);
-  color: white;
-  font-size: 24px;
-  padding: 16px 32px;
-  border: none;
-  border-radius: 8px;
-  margin: 16px;
-}
-
-.button:hover {
-  background-color: #fff;
-  color: #d7263d;
-  box-shadow: 0px 3px 15px rgba(215,38,61,0.2);
-  transform: scale(1.1);
-}
-
-.container {
-  display: flex;
-  height: 100vh; 
-}
-
-.button-container{
-  top: 65%; 
-  left: 45%;
-  display: flex;
-  position: absolute;
-  flex-direction:column; 
-  
-}
-
-.button-container button{
-  border: none;
-  width:200px;
-  height: 60px;
-  opacity: 0.5;
-  background-color: transparent;
-  transition: all 0.1s ease-in-out;
-}
-  
-
-.button-container button:active{
-  transform: scale(1.2);
-}
-
-.second-button{
-  margin-top: 40px;
-}
-
-.left-block h1,.right-block h1 {
-  display: flex;
-  font-size:80px;
-  justify-content: space-around;
-}
-
-.left-block,
-.right-block {
-  width: 50%; 
-}
-
-.left-block {
-  background-color: #f1f1f1; 
-}
-
-.right-block {
-  background-color: #ddd; 
-}
-
-.line {
-  width: 2px; 
-  background-color: #333; 
-  margin: 0 auto; 
-}
-
-  </style>
 </head>
 <body>
 
@@ -132,7 +19,7 @@
   <div class="button-container">
     <button class="first-button"><h1 class="roll_dice">ROLL DICE</h1></button>
 	  <button class="second-button"><h1 class="global">HOLD</h1></button>
-    <button class="new_game"><h1>Give game</h1></button>
+    <!--<button class="new_game"><h1 class="give">Give game</h1></button>-->
   </div>
   <div class="right-block">
     <h1 class="player">Player 2</h1>
@@ -140,31 +27,75 @@
   </div>
 </div>
 
+<div id="notification-container">
+  <div id="notification-content">
+    <h2 id="notification-header"></h2>
+    <p id="notification-message"></p>
+    <button id="notification-close">Fermer</button>
+  </div>
+</div>
+
+
 
 
 <script>
-/*Jetement du dé*/
+
+const holdButton = document.querySelector(".global");
 const roll_dice = document.querySelector('.roll_dice');
-let scoreElement = document.querySelector('.round-score');
+const playerOneScore = document.querySelector('.player-one');
+const playerTwoScore = document.querySelector('.player-two');
+
 let count = 0;
-
-roll_dice.addEventListener('click', function() {
-  let count = Math.floor(Math.random() * 6) + 1;
-  console.log(count);
-  scoreElement.textContent = +scoreElement.textContent + count;
-})
-
+let currentPlayer = 1;
+let scoreElement = document.querySelector('.player-one');
+let scoreElement2 = document.querySelector('.player-two');
 
 
 /*L'envoi des points dans global score*/
-const holdButton = document.querySelector(".global");
+
 
 holdButton.addEventListener("click", function() {
-  scoreElement.textContent = 0;
-  console.log(count);
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
+  alert("C'est le tour de Joueur" + currentPlayer)
 });
 
+/**/
 
+
+roll_dice.addEventListener('click', function() {
+  count = Math.floor(Math.random() * 6) + 1;
+  console.log(count);
+  
+  if (currentPlayer === 1) {
+    playerOneScore.textContent = +playerOneScore.textContent + count;
+    if (count === 1) {
+      currentPlayer = 2;
+    }
+  } else if (currentPlayer === 2) {
+    playerTwoScore.textContent = +playerTwoScore.textContent + count;
+    if (count === 1) {
+      currentPlayer = 1;
+    }
+  }
+})
+
+
+function showNotification(header, message) {
+  const container = document.getElementById("notification-container");
+  const headerElem = document.getElementById("notification-header");
+  const messageElem = document.getElementById("notification-message");
+  const closeButton = document.getElementById("notification-close");
+
+  headerElem.textContent = header;
+  messageElem.textContent = message;
+
+  closeButton.addEventListener("click", () => {
+    container.style.display = "none";
+  });
+
+  container.style.display = "block";
+}
+showNotification()
 
 </script>
 </body>
