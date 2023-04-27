@@ -27,76 +27,55 @@
   </div>
 </div>
 
-<div id="notification-container">
-  <div id="notification-content">
-    <h2 id="notification-header"></h2>
-    <p id="notification-message"></p>
-    <button id="notification-close">Fermer</button>
-  </div>
-</div>
+<div class="notification"></div>
 
 
 
 
-<script>
 
-const holdButton = document.querySelector(".global");
-const roll_dice = document.querySelector('.roll_dice');
-const playerOneScore = document.querySelector('.player-one');
-const playerTwoScore = document.querySelector('.player-two');
+<script type="text/javascript">
+    const holdButton = document.querySelector(".global");
+    const rollDiceButton = document.querySelector('.roll_dice');
+    const playerOneScore = document.querySelector('.player-one');
+    const playerTwoScore = document.querySelector('.player-two');
+    const notificationElement = document.querySelector('.notification');
 
-let count = 0;
-let currentPlayer = 1;
-let scoreElement = document.querySelector('.player-one');
-let scoreElement2 = document.querySelector('.player-two');
+    let count = 0;
+    let currentPlayer = 1;
 
+    rollDiceButton.addEventListener('click', function() {
+      count = Math.floor(Math.random() * 6) + 1;
+      console.log(count);
+      
+      if (currentPlayer === 1) {
+        playerOneScore.textContent = +playerOneScore.textContent + count;
+      }
+      else {
+        playerTwoScore.textContent = +playerTwoScore.textContent + count;
+      }
 
-/*L'envoi des points dans global score*/
+      if (count === 1) {
+        showNotification(`Le joueur ${currentPlayer} a obtenu 1. C'est le tour du joueur suivant.`);
+        currentPlayer = currentPlayer === 1 ? 2 : 1;
+        showNotification(`C'est le tour du joueur ${currentPlayer}.`);
+      }
+    });
 
+    holdButton.addEventListener("click", function() {
+      currentPlayer = currentPlayer === 1 ? 2 : 1;
+      showNotification(`C'est le tour du joueur ${currentPlayer}`);
+    });
 
-holdButton.addEventListener("click", function() {
-  currentPlayer = currentPlayer === 1 ? 2 : 1;
-  alert("C'est le tour de Joueur" + currentPlayer)
-});
+    function showNotification(message) {
+      notificationElement.textContent = message;
+      notificationElement.classList.add('notification-message');
+      notificationElement.style.display = 'block';
 
-/**/
-
-
-roll_dice.addEventListener('click', function() {
-  count = Math.floor(Math.random() * 6) + 1;
-  console.log(count);
-  
-  if (currentPlayer === 1) {
-    playerOneScore.textContent = +playerOneScore.textContent + count;
-    if (count === 1) {
-      currentPlayer = 2;
+      setTimeout(() => {
+        notificationElement.style.display = 'none';
+        notificationElement.classList.remove('notification-message');
+      }, 1500);
     }
-  } else if (currentPlayer === 2) {
-    playerTwoScore.textContent = +playerTwoScore.textContent + count;
-    if (count === 1) {
-      currentPlayer = 1;
-    }
-  }
-})
-
-
-function showNotification(header, message) {
-  const container = document.getElementById("notification-container");
-  const headerElem = document.getElementById("notification-header");
-  const messageElem = document.getElementById("notification-message");
-  const closeButton = document.getElementById("notification-close");
-
-  headerElem.textContent = header;
-  messageElem.textContent = message;
-
-  closeButton.addEventListener("click", () => {
-    container.style.display = "none";
-  });
-
-  container.style.display = "block";
-}
-showNotification()
-
 </script>
 </body>
 </html>
