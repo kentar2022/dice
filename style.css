@@ -2,35 +2,36 @@ body{
 	margin: 0px;
 }
 
+.roll_dice{
+  vertical-align: middle;
+  white-space: nowrap;
+
+}
 .score{
   height: 100px;
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-.player-one, .player-two, .new_game{
+.player-one, .player-two{
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
 }
 
-
-.new_game{
-  border: 1px red solid rgba(255,255,255,0.9);
-  color: red;
-  bottom: -80%;
+.reset{
   width: 10%;
 }
 
 .player-two{
-  bottom: 16%;
-  left: 60%;
+  bottom: 30%;
+  left: 70%;
   width: 10%;
   height: 10%;
 }
 .player-one{
-  bottom: 16%;
-  right: 60%;
+  bottom: 30%;
+  right: 70%;
   width: 10%;
   height: 10%;
 }
@@ -45,51 +46,81 @@ body{
   margin: 16px;
 }
 
+.first-button button, .second-button button, .third-button button {
+  display: flex;
+  align-items: center;
+}
+
+.dice_svg, .hold_svg, .update_svg {
+  margin-right: 10px;
+  width: 20%;
+  vertical-align: middle;
+}
+
 .button:hover {
   background-color: #fff;
   color: #d7263d;
   box-shadow: 0px 3px 15px rgba(215,38,61,0.2);
   transform: scale(1.1);
 }
-
+.first-button{
+  width:120px;
+  vertical-align: middle;
+}
 .container {
   display: flex;
   height: 100vh; 
 }
 
 .button-container{
-  top: 65%; 
-  left: 45%;
+  width: 25%;
+  height: 300px;
+  top: 60%;
+  left: 38%;
+  flex-wrap: wrap;
   display: flex;
   position: absolute;
-  flex-direction:column; 
-  
+  flex-direction:column;
+  background: #FF4040;
+  justify-content: space-evenly;
+  align-content: space-around;
+  border-radius: 10px;
 }
 
 .notification {
-  position: fixed;
-  top: 50%;
+  top: 30%;
   left: 50%;
-  z-index: 9999;
+  position: fixed;
   transform: translate(-50%, -50%);
 }
 
+.dice_image{
+  position: fixed;
+  width:120px;
+  height: 120px;
+  top: 4%;
+  left: 47%;
+}
+
 .notification-message {
-  width:300px;
-  height: 50px;
+  width:700px;
+  height: 100px;
+  flex-wrap: wrap;
+  font-size: 30px;
   border-radius: 10px;
   border: 1px red solid;
+  align-content: center;
   box-sizing: border-box;
+  justify-content: space-around;
   background-color: rgba(255, 0, 0, 0.7);
 }
 
 
-
 .button-container button{
-  border: none;
   width:200px;
   height: 60px;
   opacity: 0.5;
+  border: none;
   background-color: transparent;
   transition: all 0.1s ease-in-out;
 }
@@ -97,10 +128,6 @@ body{
 
 .button-container button:active{
   transform: scale(1.2);
-}
-
-.second-button{
-  margin-top: 40px;
 }
 
 .left-block h1,.right-block h1 {
@@ -128,45 +155,11 @@ body{
   margin: 0 auto; 
 }
 
-#notification-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 9999;
-  display: none;
+
+.player-one{
+  transition: transform 0.3s ease-in-out;
 }
 
-#notification-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  width: 300px;
+.player-one:hover {
+  transform: scale(1.2);
 }
-
-#notification-header {
-  font-size: 24px;
-  margin-top: 0;
-}
-
-#notification-message {
-  font-size: 18px;
-}
-
-#notification-close {
-  border: none;
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
