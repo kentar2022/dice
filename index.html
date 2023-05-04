@@ -16,11 +16,17 @@
     <h1 class="player">Player 1</h1>
     <h1 class="global_score1">0</h1>
   	<div class="round-score player-one">0</div>
-  </div>
-  <div class="button-container">
 
-    
-    <div class="first-button"><button><img src="dice.svg" class="dice_svg" /><h1 class="roll_dice">
+  </div>
+ <div>
+  <h1 class="player-win_one notification notification-message">Le joueur 1 a gagné</h1>
+</div>
+<div>
+  <h1 class="player-win_two notification notification-message">Le joueur 2 a gagné</h1>
+</div>  
+
+  <div class="button-container">
+    <div class="first-button"><button><img src="dice.svg" class="dice_svg" /><h1 class="roll_dice dice-button">
 ROLL DICE</h1></button></div>
 	  <div class="second-button"><button><img src="download.svg" class="hold_svg"><h1 class="hold">HOLD</h1></button></div>
     <div class="third-button"><button ><img src="update.svg" class="update_svg"><h1 class="reset">Reset</h1></button></div>
@@ -28,21 +34,24 @@ ROLL DICE</h1></button></div>
   <div class="right-block">
     <h1 class="player">Player 2</h1>
     <h1 class="global_score2">0</h1>
-    <div class="round-score player-two">0</div>
+    <div class="round-score player-two">0</div> 
   </div>
 </div>
 
-<div class="notification"></div>
+<div class="notification alert"></div>
 
 <script>
 const playerOneScore = document.querySelector('.player-one');
 const playerTwoScore = document.querySelector('.player-two');
 const globalScore1 = document.querySelector('.global_score1');
 const globalScore2 = document.querySelector('.global_score2');
-const notificationElement = document.querySelector('.notification');
-const rollDiceButton = document.querySelector('.roll_dice');
+const notificationElement = document.querySelector('.alert');
+let rollDiceButton = document.querySelector('.roll_dice');
 const audio_dice = new Audio('dice.mp3');
 const audio_notification = new Audio('notif.mp3');
+const player_win_one = document.querySelector('.player-win_one');
+const player_win_two = document.querySelector('.player-win_two');
+const holdButton = document.querySelector('.hold');
 
 let count = 0;
 let currentPlayer = 1;
@@ -51,7 +60,9 @@ const cooldownTime = 1000;
 
 
 
-  rollDiceButton.addEventListener('click', function() {
+rollDiceButton.addEventListener('click', click_dice);
+function click_dice() {
+  gamover();
   const now = Date.now();
   if (now - lastRollTime < cooldownTime) {
     console.log("Le dé ne peut pas être tiré deux fois d'affilé");
@@ -64,11 +75,9 @@ const cooldownTime = 1000;
   
   if (currentPlayer === 1) {
     playerOneScore.textContent = +playerOneScore.textContent + count;
-    gamover(1);
   }
   else {
     playerTwoScore.textContent = +playerTwoScore.textContent + count;
-    gamover(2);
   }
 
   if (count === 1) {
@@ -82,18 +91,21 @@ const cooldownTime = 1000;
     audio_notification.play();
   }
   audio_dice.play();
-});
+};
 
-function gamover(player) {
-  const score = player === 1 ? +playerOneScore.textContent : +playerTwoScore.textContent;
-  if (score >= 100) {
-    showNotification(`Le joueur ${player} a gagné!`);
+function gamover() {
+  if (parseInt(globalScore1.textContent) >= 100) {
+    player_win_one.classList.remove('player-win_one');
+    endGame();
+  } else if (parseInt(globalScore2.textContent) >= 100) {
+    player_win_two.classList.remove('player-win_two');
     endGame();
   }
 }
 
-const holdButton = document.querySelector('.hold');
-holdButton.addEventListener("click", function() {
+holdButton.addEventListener('click', hold_points);
+
+function hold_points() { 
   if (currentPlayer === 1) {
     let newScore = parseInt(playerOneScore.textContent) + parseInt(globalScore1.textContent);
     globalScore1.textContent = newScore;
@@ -107,7 +119,7 @@ holdButton.addEventListener("click", function() {
   }
   showNotification(`C'est le tour du joueur ${currentPlayer}`);
   audio_notification.play();
-});
+};
 
 function showNotification(message) {
   notificationElement.textContent = message;
@@ -127,12 +139,20 @@ resetButton.addEventListener('click', function() {
   playerTwoScore.textContent = count;
   globalScore1.textContent = count;
   globalScore2.textContent = count;
+  rollDiceButton.addEventListener("click", click_dice);
+  rollDiceButton.classList.add('roll_dice');
+  player_win_one.classList.add('player-win_one');
+  player_win_two.classList.add('player-win_two');
+  holdButton.addEventListener('click', hold_points);
+  holdButton.classList.add('hold_points');
 });
 
 function endGame() {
-  holdButton.disabled = true;
-  rollDiceButton.disabled = true;
-}
+  rollDiceButton.removeEventListener('click', click_dice);
+  rollDiceButton.classList.remove('roll_dice');
+  holdButton.removeEventListener('click', hold_points);
+  holdButton.classList.remove('hold_points');
+};
 
 
 </script>
