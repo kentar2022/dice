@@ -16,14 +16,53 @@
     <h1 class="player">Player 1</h1>
     <h1 class="global_score1">0</h1>
   	<div class="round-score player-one">0</div>
-
   </div>
+
  <div>
   <h1 class="player-win_one notification notification-message">Le joueur 1 a gagné</h1>
 </div>
 <div>
   <h1 class="player-win_two notification notification-message">Le joueur 2 a gagné</h1>
-</div>  
+</div>
+
+<div class=" one_point cube_hidden">
+  <div class="point"></div>
+</div>
+<div class=" two_point cube_hidden">
+  <div class="point"></div>
+  <div class="point"></div>
+</div>
+<div class=" three_point cube_hidden">
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+</div>
+
+<div class=" four_point cube_hidden">
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+</div>
+<div class=" five_point cube_hidden">
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+</div>
+<div class=" six_point cube_hidden">
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+  <div class="point"></div>
+</div>
+
+
+
+
 
   <div class="button-container">
     <div class="first-button"><button><img src="dice.svg" class="dice_svg" /><h1 class="roll_dice dice-button">
@@ -53,6 +92,16 @@ const player_win_one = document.querySelector('.player-win_one');
 const player_win_two = document.querySelector('.player-win_two');
 const holdButton = document.querySelector('.hold');
 
+const cube_one = document.querySelector('.one_point');
+const cube_two = document.querySelector('.two_point');
+const cube_three = document.querySelector('.three_point');
+const cube_four = document.querySelector('.four_point');
+const cube_five = document.querySelector('.five_point');
+const cube_six = document.querySelector('.six_point');
+
+
+
+
 let count = 0;
 let currentPlayer = 1;
 let lastRollTime = 0;
@@ -81,6 +130,7 @@ function click_dice() {
   }
 
   if (count === 1) {
+    cube_one.classList.add("cube_settings");
     showNotification(`Le joueur ${currentPlayer} a obtenu 1. C'est le tour du joueur suivant`);
     if (currentPlayer === 1) {
       playerOneScore.textContent = 0;
@@ -91,6 +141,7 @@ function click_dice() {
     audio_notification.play();
   }
   audio_dice.play();
+  removeDice();
 };
 
 function gamover() {
@@ -129,6 +180,12 @@ function showNotification(message) {
   setTimeout(() => {
     notificationElement.style.display = 'none';
     notificationElement.classList.remove('notification-message');
+    cube_one.classList.remove('cube_settings');
+    cube_two.classList.remove('cube_settings');
+    cube_three.classList.remove('cube_settings');
+    cube_four.classList.remove('cube_settings');
+    cube_five.classList.remove('cube_settings');
+    cube_six.classList.remove('cube_settings');
   }, 2500);
 }
 
@@ -154,6 +211,36 @@ function endGame() {
   holdButton.classList.remove('hold_points');
 };
 
+function removeDice() {
+
+  if (count === 2) {
+      cube_two.classList.add("cube_settings");
+    }
+    if (count === 3) {
+      cube_three.classList.add("cube_settings");
+    }
+    if (count === 4) {
+      cube_four.classList.add("cube_settings");
+    }
+    if (count === 5) {
+      cube_five.classList.add("cube_settings");
+    }
+    if (count === 6) {
+      cube_six.classList.add("cube_settings");
+    }
+
+    setTimeout(() => {
+    cube_one.classList.remove('cube_settings');
+    cube_two.classList.remove('cube_settings');
+    cube_three.classList.remove('cube_settings');
+    cube_four.classList.remove('cube_settings');
+    cube_five.classList.remove('cube_settings');
+    cube_six.classList.remove('cube_settings');
+  }, 1000);
+
+
+  
+}
 
 </script>
 

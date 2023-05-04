@@ -81,7 +81,6 @@ h1 {display: flex;}
   top: 60%;
   left: 38%;
   flex-wrap: wrap;
-  display: flex;
   position: absolute;
   flex-direction:column;
   background: #FF4040;
@@ -164,11 +163,124 @@ h1 {display: flex;}
   margin: 0 auto; 
 }
 
-
 .player-one{
   transition: transform 0.3s ease-in-out;
 }
 
 .player-one:hover {
   transform: scale(1.2);
+}
+
+.cube_hidden{
+  display: none;
+}
+
+.cube_settings {
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  background-color: #FF4040;
+  border-radius:10px;
+  display: flex;
+  align-items: center;
+  left: 47%;
+  bottom: 50%;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.point {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+
+.one_point .point:nth-of-type(1){
+  margin: 0px 0px 0px 35px;
+}
+
+.two_point .point:nth-of-type(1) {
+  margin: 0px 0px 70px 0px;
+}
+
+.two_point .point:nth-of-type(2) {
+  align-self: flex-end;
+  margin: 0px 5px 0px 10px;
+}
+
+.three_point .point:nth-of-type(1) {
+  align-self :flex-end;
+}
+
+.three_point .point:nth-of-type(3) {
+  margin: 0px 0px 70px 0px;
+}
+
+.four_point .point:nth-of-type(1){
+  margin: 0px 0 70px 0;
+}
+
+.four_point .point:nth-of-type(2){
+  margin: 0px 0px 70px 75px;
+  position: absolute;
+}
+
+.four_point .point:nth-of-type(3){
+  margin: 70px 0px 0px 75px;
+  position: absolute;
+}
+
+.four_point .point:nth-of-type(4){
+  margin: 70px 0px 0px 0px;
+  position: absolute;
+}
+
+.five_point .point:nth-of-type(1) {
+  margin: 70px 0px 0px 0px;
+}
+
+.five_point .point:nth-of-type(2){
+  margin: 0px 0px 70px 75px;
+  position: absolute;
+}
+
+.five_point .point:nth-of-type(3){
+  margin: 70px 0px 0px 75px;
+  position: absolute;
+}
+
+.five_point .point:nth-of-type(4){
+  margin: 0px 0px 70px 0px;
+  position: absolute;
+}
+
+.five_point .point:nth-of-type(5){
+  margin: 0px 0px 0px 35px;
+  position: absolute;
+}
+
+
+.six_point .point:nth-of-type(1){
+  margin: 70px 0px 0px 70px;
+  position: absolute;
+}
+
+.six_point .point:nth-of-type(2){
+  margin: 0px 0px 70px 0px;
+  position: absolute;
+}
+
+.six_point .point:nth-of-type(3){
+  margin: 70px 35px 0px 0px;
+  position: absolute;
+}
+
+.six_point .point:nth-of-type(5){
+  margin: 0px 0px 70px 70px;
+  position: absolute;
+}
+.six_point .point:nth-of-type(6){
+  margin: 0px 0px 0px 70px;
+  position: absolute;
 }
