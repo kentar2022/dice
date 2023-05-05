@@ -1,8 +1,11 @@
 body{
 	margin: 0px;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif; 
 }
 
-h1 {display: flex;}
+
 
 .dice-button{
   vertical-align: middle;
@@ -23,6 +26,9 @@ h1 {display: flex;}
 
 .reset{
   width: 10%;
+}
+.button-container button:active{
+  transform: scale(1.2);
 }
 
 .player-two{
@@ -53,18 +59,15 @@ h1 {display: flex;}
   align-items: center;
 }
 
+
 .dice_svg, .hold_svg, .update_svg {
   margin-right: 10px;
   width: 20%;
   vertical-align: middle;
 }
 
-.button:hover {
-  background-color: #fff;
-  color: #d7263d;
-  box-shadow: 0px 3px 15px rgba(215,38,61,0.2);
-  transform: scale(1.1);
-}
+
+
 .first-button{
   width:120px;
   vertical-align: middle;
@@ -122,8 +125,6 @@ h1 {display: flex;}
 }
 
 
-
-
 .button-container button{
   width:200px;
   height: 60px;
@@ -133,15 +134,14 @@ h1 {display: flex;}
   transition: all 0.1s ease-in-out;
 }
   
-
-.button-container button:active{
-  transform: scale(1.2);
-}
-
 .left-block h1,.right-block h1 {
   display: flex;
   font-size:80px;
   justify-content: space-around;
+}
+
+h1 {
+  display: flex;
 }
 
 .left-block,
@@ -163,17 +163,34 @@ h1 {display: flex;}
   margin: 0 auto; 
 }
 
-.player-one{
-  transition: transform 0.3s ease-in-out;
-}
-
-.player-one:hover {
-  transform: scale(1.2);
-}
-
 .cube_hidden{
   display: none;
 }
+
+.turn_off{
+  display: none;
+}
+
+.turn_one{
+  position: absolute;
+  background-color: #FF4040;
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
+  top: 9%;
+  left: 33%;
+}
+
+.turn_two{
+  position: absolute;
+  background-color: #FF4040;
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
+  top: 9%;
+  left: 83%;
+}
+
 
 .cube_settings {
   position: absolute;
