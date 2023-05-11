@@ -1,12 +1,24 @@
+
+
 body{
-	margin: 0px;
   font-family: 'Lato', sans-serif;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Raleway', sans-serif; 
 }
-
-
-
+.button-container{
+  display: flex;
+  width: 25%;
+  height: 300px;
+  top: 50%;
+  left: 38%;
+  flex-wrap: wrap;
+  position: absolute;
+  flex-direction:column;
+  background: #FF4040;
+  justify-content: space-evenly;
+  align-content: space-around;
+  border-radius: 10px;
+}
 .dice-button{
   vertical-align: middle;
   white-space: nowrap;
@@ -24,6 +36,10 @@ body{
   position: absolute;
 }
 
+.bg-secondary {
+    background-color: #c5c5c5!important;
+}
+
 .reset{
   width: 10%;
 }
@@ -33,14 +49,14 @@ body{
 
 .player-two{
   bottom: 30%;
-  left: 70%;
-  width: 10%;
+  left: 40%;
+  width: 20%;
   height: 10%;
 }
 .player-one{
   bottom: 30%;
-  right: 70%;
-  width: 10%;
+  right: 40%;
+  width: 20%;
   height: 10%;
 }
 
@@ -51,7 +67,7 @@ body{
   padding: 16px 32px;
   border: none;
   border-radius: 8px;
-  margin: 16px;
+  margin-top: 300px;
 }
 
 .first-button button, .second-button button, .third-button button {
@@ -67,14 +83,9 @@ body{
 }
 
 
-
 .first-button{
   width:120px;
   vertical-align: middle;
-}
-.container {
-  display: flex;
-  height: 100vh; 
 }
 
 .button-container{
@@ -90,6 +101,14 @@ body{
   justify-content: space-evenly;
   align-content: space-around;
   border-radius: 10px;
+}
+
+#image {
+  position: fixed;
+  width:120px;
+  height: 120px;
+  top: 4%;
+  left: 47%;
 }
 
 .notification {
@@ -124,6 +143,13 @@ body{
   display:none;
 }
 
+.game-border{
+  padding: 0px;
+}
+
+.player{
+   margin-top: 50px;
+}
 
 .button-container button{
   width:200px;
@@ -135,18 +161,14 @@ body{
 }
   
 .left-block h1,.right-block h1 {
-  display: flex;
   font-size:80px;
-  justify-content: space-around;
 }
 
-h1 {
-  display: flex;
-}
 
 .left-block,
 .right-block {
-  width: 50%; 
+  width: 100%; 
+  height: 944px;
 }
 
 .left-block {
@@ -177,8 +199,8 @@ h1 {
   width: 30px;
   height: 30px;
   border-radius:50%;
-  top: 9%;
-  left: 33%;
+  top: 10%;
+  left: 67%;
 }
 
 .turn_two{
@@ -187,15 +209,19 @@ h1 {
   width: 30px;
   height: 30px;
   border-radius:50%;
-  top: 9%;
-  left: 83%;
+  top: 10%;
+  left: 67%;
+}
+
+button:focus {
+  outline: none;
 }
 
 
 .cube_settings {
   position: absolute;
-  width: 95px;
-  height: 95px;
+  width: 120px;
+  height: 120px;
   background-color: #FF4040;
   border-radius:10px;
   display: flex;
@@ -208,13 +234,13 @@ h1 {
 
 .point {
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   background-color: white;
 }
 
 .one_point .point:nth-of-type(1){
-  margin: 0px 0px 0px 35px;
+  margin: 0px 0px 0px 40px;
 }
 
 .two_point .point:nth-of-type(1) {
@@ -223,7 +249,7 @@ h1 {
 
 .two_point .point:nth-of-type(2) {
   align-self: flex-end;
-  margin: 0px 5px 0px 10px;
+  margin: 0px 0px 0px 10px;
 }
 
 .three_point .point:nth-of-type(1) {
@@ -273,13 +299,13 @@ h1 {
 }
 
 .five_point .point:nth-of-type(5){
-  margin: 0px 0px 0px 35px;
+  margin: 0px 0px 0px 38px;
   position: absolute;
 }
 
 
 .six_point .point:nth-of-type(1){
-  margin: 70px 0px 0px 70px;
+  margin: 70px 0px 0px 75px;
   position: absolute;
 }
 
@@ -294,10 +320,10 @@ h1 {
 }
 
 .six_point .point:nth-of-type(5){
-  margin: 0px 0px 70px 70px;
+  margin: 0px 0px 70px 75px;
   position: absolute;
 }
 .six_point .point:nth-of-type(6){
-  margin: 0px 0px 0px 70px;
+  margin: 0px 0px 0px 75px;
   position: absolute;
 }

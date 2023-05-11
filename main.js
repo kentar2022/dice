@@ -158,8 +158,6 @@ function removeDice() {
     cube_four.classList.remove('cube_settings');
     cube_five.classList.remove('cube_settings');
     cube_six.classList.remove('cube_settings');
-  }, 1000);
+  }, 2500);
 
-
-  
 }
